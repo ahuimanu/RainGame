@@ -3,7 +3,7 @@
  * Rain game from TheCherno
  */
 
-package net.babbster.net;
+package net.babbster.rain;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
