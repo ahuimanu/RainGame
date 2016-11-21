@@ -4,7 +4,7 @@
 
 package net.babbster.net;
 
-public class Game {
+public class Game implements Runnable{
     public static int width = 300;
     public static int height = width / 16 * 9;
     public static int scale = 3;
@@ -12,6 +12,12 @@ public class Game {
     private Thread thread;
 
     public synchronized void start(){
-        thread = new Thread();
+        thread = new Thread(this, "Display");
+        thread.start();
+    }
+
+    @Override
+    public void run() {
+
     }
 }
