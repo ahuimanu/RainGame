@@ -6,6 +6,7 @@
 package net.babbster.net;
 
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 import javax.swing.*;
 
 public class Game extends Canvas implements Runnable{
@@ -45,8 +46,25 @@ public class Game extends Canvas implements Runnable{
     public void run() {
         while(running){
             //game loop
-            System.out.println("Running...");
+            //logic
+            update();
+            //rendering
+            render();
         }
+    }
+
+    public void update(){
+
+    }
+
+    public void render(){
+        BufferStrategy bs = getBufferStrategy();
+        if(bs == null){
+            //triple buffering
+            createBufferStrategy(3);
+            return;
+        }
+
     }
 
     public static void main(String[] args){
