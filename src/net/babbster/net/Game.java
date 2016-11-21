@@ -4,12 +4,16 @@
 
 package net.babbster.net;
 
-public class Game implements Runnable{
+import java.awt.*;
+import javax.swing.*;
+
+public class Game extends Canvas implements Runnable{
     public static int width = 300;
     public static int height = width / 16 * 9;
     public static int scale = 3;
 
     private Thread thread;
+    private JFrame frame;
     private boolean running = false;
 
     public synchronized void start(){
