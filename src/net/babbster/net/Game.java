@@ -65,6 +65,16 @@ public class Game extends Canvas implements Runnable{
             return;
         }
 
+        //apply buffer to graphics object
+        Graphics g = bs.getDrawGraphics();
+        //all graphics here
+        g.setColor(Color.CYAN);
+        g.fillRect(0, 0, getWidth(), getHeight());
+        //release resources
+        g.dispose();
+
+        bs.show();
+
     }
 
     public static void main(String[] args){
