@@ -5,6 +5,8 @@
 
 package net.babbster.rain;
 
+import net.babbster.rain.graphics.Screen;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -23,12 +25,16 @@ public class Game extends Canvas implements Runnable{
     private JFrame frame;
     private boolean running = false;
 
+    private Screen screen;
+
     private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 
     public Game(){
         Dimension size = new Dimension(width * scale, height * scale);
         setPreferredSize(size);
+
+        screen = new Screen(width, height);
 
         frame = new JFrame();
     }
@@ -70,11 +76,20 @@ public class Game extends Canvas implements Runnable{
             return;
         }
 
+        screen.render();
+
+        for(int i = 0; i < pixels.length; i++) {
+            pixels[i] = screen.pixels[i];
+        }
+
         //apply buffer to graphics object
         Graphics g = bs.getDrawGraphics();
         //all graphics here
+
         g.setColor(Color.CYAN);
         g.fillRect(0, 0, getWidth(), getHeight());
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+
         //release resources
         g.dispose();
 
