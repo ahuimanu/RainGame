@@ -1,5 +1,6 @@
 /**
  * Created by jeff on 11/20/2016.
+ * Rain game from TheCherno
  */
 
 package net.babbster.net;
@@ -15,6 +16,11 @@ public class Game extends Canvas implements Runnable{
     private Thread thread;
     private JFrame frame;
     private boolean running = false;
+
+    public Game(){
+        Dimension size = new Dimension(width * scale, height * scale);
+        setPreferredSize(size);
+    }
 
     public synchronized void start(){
         running = true;
