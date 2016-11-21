@@ -20,6 +20,8 @@ public class Game extends Canvas implements Runnable{
     public Game(){
         Dimension size = new Dimension(width * scale, height * scale);
         setPreferredSize(size);
+
+        frame = new JFrame();
     }
 
     public synchronized void start(){
@@ -41,5 +43,16 @@ public class Game extends Canvas implements Runnable{
         while(running){
             //game loop
         }
+    }
+
+    public static void main(String[] args){
+        Game game = new Game();
+        game.frame.setResizable(false);
+        game.frame.setTitle("Rain");
+
+        //we can do this because the Game is a Canvas
+        game.frame.add(game);
+        game.frame.pack();
+        game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
